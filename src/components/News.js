@@ -21,9 +21,10 @@ export class News extends Component {
       loading: false,
       page: 1,
     };
+    const URL=process.env.REACT_APP_URL;
   }
   async componentDidMount() {
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=05c82bf069fe4360a5461818124bc701&page=1&pageSize=${this.props.pageSize}`;
+    let url = `{URL}?country=${this.props.country}&category=${this.props.category}&apiKey=05c82bf069fe4360a5461818124bc701&page=1&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
@@ -35,7 +36,7 @@ export class News extends Component {
   }
   doPrevious = async () => {
     console.log("pr");
-    let url = `https://newsapi.org/v2/top-headlines?country=${
+    let url = `{URL}?country=${
       this.props.country
     }&category=${
       this.props.category
@@ -57,7 +58,7 @@ export class News extends Component {
   doNext = async () => {
     console.log("ne");
 
-    let url = `https://newsapi.org/v2/top-headlines?country=${
+    let url = `{URL}?country=${
       this.props.country
     }&category=${
       this.props.category
